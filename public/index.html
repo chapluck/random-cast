@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" ng-app="randomCast">
+<head>
+  <meta charset="utf-8">
+  <title>Random Cast</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="RandomTipCtrl">
+    <div class="vcenter-outer">
+        <div class="container vcenter-inner">
+            <div class="jumbotron">
+              <h1 ng-bind-html="tip.title"></h1>
+              <p ng-bind-html="tip.content"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

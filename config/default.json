@@ -1,0 +1,11 @@
+{
+    "Readability": {
+        "ParserKey": "place here a key",
+        "Reader": {
+            "Key": "place here a key",
+            "Secret": "place here a secret",
+            "AccountName": "name of user which articles we see",
+            "AccountPwd": "user's password"
+        }
+    }
+}
