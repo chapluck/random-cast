@@ -19,12 +19,13 @@
     "express": "~4.12.2",
     "jade": "~1.9.2",
     "morgan": "~1.5.1",
+    "nodemon": "^1.11.0",
     "serve-favicon": "~2.2.0"
   },
   "scripts": {
     "postinstall": "bower install",
     "prestart_": "npm install",
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "pretest": "npm install",
     "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run"
