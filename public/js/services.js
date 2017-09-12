@@ -61,7 +61,15 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
     .factory('RssProvider', ['FeedLoader', function (FeedLoader) {
         return {
             getTip: function (setTip) {
-                FeedLoader.fetch({ rss_url: 'http://www.i-programmer.info/index.php?option=com_ninjarsssyndicator&feed_id=1&format=raw' }, {},
+                var rssUrls = ["https://twitrss.me/twitter_user_to_rss/?user=JS_Cheerleader",
+                "https://twitrss.me/twitter_user_to_rss/?user=dan_abramov",
+                "https://twitrss.me/twitter_user_to_rss/?user=eggheadio",
+                "https://twitrss.me/twitter_user_to_rss/?user=nodejs",
+                "https://twitrss.me/twitter_user_to_rss/?user=angular",
+                "https://twitrss.me/twitter_user_to_rss/?user=javascript",
+                'http://www.i-programmer.info/index.php?option=com_ninjarsssyndicator&feed_id=1&format=raw',
+            ]; 
+                FeedLoader.fetch({ rss_url: rssUrls[Math.floor(Math.random() * rssUrls.length)] }, {},
                     function (data) { //lookup title
                         if (data.status != "ok" || !data.items.length) {
                             return setTip(null);
