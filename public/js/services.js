@@ -24,7 +24,7 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
                 if(tip){
                     service.currentTip.title = $sce.trustAsHtml(tip.title);
                     service.currentTip.content = $sce.trustAsHtml(tip.content);
-                    $timeout(function () { run(); }, 1 * 600000);
+                    $timeout(function () { run(); }, 1 * 60000);
                 }
                 else
                     $timeout(function () { run(); }, 0);                
@@ -41,7 +41,24 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
         return {
             getTip: function (setTip) {
                 service.fetch(function (data) { //lookup title
-                    setTip({ title: "&nbsp;-&nbsp;" + data.text, content: "" });
+                    setTip({ title: "&nbsp;-&nbsp;" + data.text.replace("блять", "пупсик")
+                        .replace("пизд", "трынд")
+                        .replace("Пизд", "Трынд")
+                        .replace("ебан", "ломан")
+                        .replace("Ебан", "Ломан")
+                        .replace("Ёб", "Лом")
+                        .replace("ёб", "лом")
+                        .replace("Ебат", "Ломат")
+                        .replace("ебат", "ломат")
+                        .replace("бля", "ёшкин")
+                        .replace("нахуя", "зачем")
+                        .replace("хуя", "чёрта")
+                        .replace("хуй", "чёрт")
+                        .replace("ёпт", "ёшкин")
+                        .replace("Нахуя", "Зачем")
+                        .replace("Хуя", "Чёрта")
+                        .replace("Хуй", "Чёрт")
+                        .replace("Ёпт", "ёшкин"), content: "" });
                 });
             }
         };
@@ -66,8 +83,7 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
                 "https://twitrss.me/twitter_user_to_rss/?user=eggheadio",
                 "https://twitrss.me/twitter_user_to_rss/?user=nodejs",
                 "https://twitrss.me/twitter_user_to_rss/?user=angular",
-                "https://twitrss.me/twitter_user_to_rss/?user=javascript",
-                'http://www.i-programmer.info/index.php?option=com_ninjarsssyndicator&feed_id=1&format=raw',
+                "https://twitrss.me/twitter_user_to_rss/?user=javascript"
             ]; 
                 FeedLoader.fetch({ rss_url: rssUrls[Math.floor(Math.random() * rssUrls.length)] }, {},
                     function (data) { //lookup title
