@@ -1,5 +1,9 @@
+html {
+  height: 100%;
+}
 body {
-  padding: 50px;
+  height: 100%;
+  padding: 0 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,8 +11,10 @@ a {
   color: #00B7FF;
 }
 .vcenter-outer {
-    margin-top:50%;
+    height: 100%;
+    display: table;
 }
 .vcenter-inner {
-    margin-top:-50%;
+    display: table-cell;
+    vertical-align: middle;
 }

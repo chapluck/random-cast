@@ -12,7 +12,7 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
         };
 
         function run() {
-            var picker = Math.floor(Math.random() * 3);
+            var picker = Math.floor(Math.random() * 4);
             if (picker < 2) {
                 var provider = FGAdviceProvider;
             }
@@ -78,21 +78,23 @@ angular.module('RandomTipServices', ['ngSanitize', 'ngResource'])
     .factory('RssProvider', ['FeedLoader', function (FeedLoader) {
         return {
             getTip: function (setTip) {
-                var rssUrls = ["https://twitrss.me/twitter_user_to_rss/?user=JS_Cheerleader",
-                "https://twitrss.me/twitter_user_to_rss/?user=dan_abramov",
-                "https://twitrss.me/twitter_user_to_rss/?user=eggheadio",
+                var rssUrls = ["https://twitrss.me/twitter_user_to_rss/?user=codinghorror",
+                "https://twitrss.me/twitter_user_to_rss/?user=meyerweb",
+                "https://twitrss.me/twitter_user_to_rss/?user=spolsky",
                 "https://twitrss.me/twitter_user_to_rss/?user=nodejs",
                 "https://twitrss.me/twitter_user_to_rss/?user=angular",
-                "https://twitrss.me/twitter_user_to_rss/?user=javascript"
+                "https://twitrss.me/twitter_user_to_rss/?user=shanselman",
+                 
             ]; 
                 FeedLoader.fetch({ rss_url: rssUrls[Math.floor(Math.random() * rssUrls.length)] }, {},
                     function (data) { //lookup title
                         if (data.status != "ok" || !data.items.length) {
                             return setTip(null);
                         }
-                        var picker = Math.floor(Math.random() * data.items.length);                        
+                        var picker = Math.floor(Math.random() * data.items.length);
+                        console.log(data.items[picker]);
                         setTip({
-                            title: data.items[picker].title,
+                            title: 'Twitter ' + data.items[picker].author + ' ' + data.items[picker].pubDate.slice(0, 10),
                             content: data.items[picker].content
                         });
                     });
